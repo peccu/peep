@@ -2,6 +2,7 @@
 
 import sys
 import webbrowser
+import curses
 
 from decorator import *
 from decorator import KEYBINDINGS, HELPS
@@ -13,12 +14,12 @@ __all__ = ['get']
 def get(mode, key):
   return KEYBINDINGS.get(mode).get(key)
 
-@bindkey(MODE.UNREAD, 'j')
+@bindkey(MODE.UNREAD, 'j',str(curses.KEY_DOWN))
 def next(app):
   'selects the next item in the list'
   return app.ui.grid_panel.next(app.reader.get_unread_entries())
 
-@bindkey(MODE.UNREAD, 'k')
+@bindkey(MODE.UNREAD, 'k',str(curses.KEY_UP))
 def prev(app):
   'selects the previous item in the list'
   return app.ui.grid_panel.prev(app.reader.get_unread_entries())

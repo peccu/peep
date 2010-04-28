@@ -38,4 +38,4 @@ class App(object):
     self.ui = MainScreen(stdscr)
     self.mode = MODE.UNREAD
     command.execute(self, 'r') # switch unread mode
-    while 1: command.execute(self, stdscr.getkey())
+    while 1: command.execute(self, stdscr.getch())

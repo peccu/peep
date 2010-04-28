@@ -6,6 +6,10 @@ from message import Message
 __all__ = ['execute']
 
 def execute(app, key=None):
+  if 0 < key < 256:   # normal character
+    key = chr(key)
+  else:
+    key = str(key)
   callback = keybindings.get(app.mode, key)
   if callback:
     try:
